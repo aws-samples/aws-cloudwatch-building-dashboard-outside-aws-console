@@ -521,7 +521,7 @@
       "Value" : { "Ref" : "EC2Instance" }
     },
 
-    "APIKey_Ref" : {
+    "APIKeyRef" : {
       "Description": "The API Key Reference - not the key itself",  
       "Value" : { "Ref" : "ApiKey" }
     }
