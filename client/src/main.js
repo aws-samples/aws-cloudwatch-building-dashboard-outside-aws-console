@@ -14,7 +14,7 @@ function app(window) {
     if (queue) {
         for (var i = 0; i < queue.length; i++) {
             
-            configurations = extendObject(configurations, queue[i][1]);
+            configurations = addParams(configurations, queue[i][1]);
             apiHandler(queue[i][0], configurations);
         }
     }
@@ -22,35 +22,30 @@ function app(window) {
 
 function apiHandler(api, params) {
 
-    console.log(`Handling API call ${api}`, params);
+    console.log(`API Handler ${api}`, params);
 
-    switch (api) {
-        case 'widget':
-            var options = {
-                    url: params.url+'?widgetDefinition='+encodeURIComponent(JSON.stringify(params.widget)),
-                    headers: {
-                        'x-api-key' : params.api_key,
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Accept' : 'image/png'
-                    }
-            };
+    var options = {
+        url: params.url+'?widgetDefinition='+encodeURIComponent(JSON.stringify(params.widget)),
+        headers: {
+                'x-api-key' : params.api_key,
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept' : 'image/png'
+        }
+    };
 
-			request(options, function (error, response, body) {
-  				console.log('error:', error); 
-  				console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  				console.log('body:', body)
+	request(options, function (error, response, body) {
+  		console.log('error:', error); 
+  		console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  		console.log('body:', body)
 
-                var img = new Buffer(body, 'base64');
-  				render(img);
+        var img = new Buffer(body, 'base64');
+  		render(img);
 
-			});
-            break;
-        default:
-            console.warn(`No handler defined for ${api}`);
-    }
+	});
+           
 }
 
-function extendObject(a, b) {
+function addParams(a, b) {
     for (var key in b)
         if (b.hasOwnProperty(key))
             a[key] = b[key];
