@@ -17,7 +17,7 @@
                "AWS/EC2",
                "CPUUtilization",
                "InstanceId",
-               "i-04310394a07b6114e"
+               "<YOUR_INSTANCE_ID>"
             ]
          ],
          "stat": "Average",
@@ -38,8 +38,8 @@
             js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
             js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
         }(window, document, 'script', 'cw', './widget.js'));
-        cw('widget', { url: 'https://idhueo81fc.execute-api.us-east-1.amazonaws.com/LATEST/graph',
-                       api_key: '4YO7IFUTlY1s2nxsGkf465oMvxT011zN5wOlPQdp', 
+        cw('widget', { url: '<YOUR_API_GATEWAY_URL>',
+                       api_key: '<YOUR_API_KEY>', 
                        widget : JSON.parse(document.getElementById('widgetDefinition').innerHTML)
                      });
     </script>
