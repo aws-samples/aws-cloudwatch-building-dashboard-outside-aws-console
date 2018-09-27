@@ -1,0 +1,21 @@
+{
+  "name": "js-widget",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "build-release": "./node_modules/.bin/webpack --config webpack.config.js --env.prod",
+    "start": "./node_modules/.bin/webpack-dev-server --open"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "babel-loader": "^8.0.0-beta.0",
+    "copy-webpack-plugin": "^4.5.2",
+    "html-loader": "^0.5.1",
+    "json-loader": "^0.5.7",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.3"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
