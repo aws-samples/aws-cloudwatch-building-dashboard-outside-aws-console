@@ -10,7 +10,7 @@ This library is licensed under the Apache 2.0 License.
 
 This project includes client code which is packaged using WebPack into a Javascript embeddable widget. There is a sample HTML page index.html that has the resulting widget embedded. 
 
-The server code is intended to run as an AWS Lambda function behind an API GateWay. The Lambda function retreives the requested CloudWatch widget by calling the CloudWatch [GetMetricWidgetImage](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html) API.  
+The server code is intended to run as an AWS Lambda function behind an API GateWay. The Lambda function retrieves the requested CloudWatch widget by calling the CloudWatch [GetMetricWidgetImage](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html) API.  
 
 Full instructions can be found in the associated blog post on the AWS DevOps blog. 
 
