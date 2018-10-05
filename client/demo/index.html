@@ -4,7 +4,7 @@
 </head>
 <body>
 
-    <script type="application/json" id="widgetDefinition">
+    <script type="application/json" name="widgetDefinition">
       {
         "width": 500,
         "height": 400,
@@ -32,15 +32,51 @@
     }
     </script>
 
+     <script type="application/json" name="widgetDefinition">
+      {
+        "width": 500,
+        "height": 400,
+        "start": "-PT1H",
+        "end": "PT0H",
+        "view": "timeSeries",
+        "stacked": false,
+        "metrics": [
+            [
+               "AWS/EC2",
+               "CPUCreditUsage",
+               "InstanceId",
+               "<YOUR_INSTANCE_ID>"
+            ]
+         ],
+         "stat": "Average",
+         "yAxis": {
+                "left": {
+                    "min": 0,
+                    "max": 0.003
+                }
+         },
+         "period": 60
+        
+    }
+    </script>
+
     <script>
+        var list = [] ;
+        var widgets = document.getElementsByName('widgetDefinition');
+        widgets.forEach((val, key, arr) => { 
+            var val = val.innerHTML; 
+            if(list.length > 0 && !Object.is(arr.length - 1, key)) val+=',' ;
+            list.push(JSON.parse(val)) ; 
+        });
+
         (function (w,d,s,o,f,js,fjs) {
             w['CW-Widget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
             js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
             js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
         }(window, document, 'script', 'cw', './widget.js'));
-        cw('widget', { url: '<YOUR_API_GATEWAY_URL>',
+        cw('widget', { url: '<YOUR_GATEWAY_URL>',
                        api_key: '<YOUR_API_KEY>', 
-                       widget : JSON.parse(document.getElementById('widgetDefinition').innerHTML)
+                       widget : list
                      });
     </script>
 </body>

@@ -20,7 +20,9 @@ exports.myHandler = function(event, context, callback) {
                 statusCode: 200,
                 headers: {
                 'Content-Type' : 'image/png',
-                'Access-Control-Allow-Origin' : '*'
+                'Access-Control-Allow-Origin' : '*',
+                'Access-Control-Allow-Methods' : 'POST, GET, PUT, OPTIONS',
+                'Access-Control-Allow-Headers' : 'x-api-key'
                 },
                 body: new Buffer(data.MetricWidgetImage).toString('base64')
     };

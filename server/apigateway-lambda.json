@@ -441,7 +441,7 @@
             },
           "IntegrationResponses": [{
             "ResponseParameters": {
-              "method.response.header.Access-Control-Allow-Headers": "'*'",
+              "method.response.header.Access-Control-Allow-Headers": "'x-api-key'",
               "method.response.header.Access-Control-Allow-Methods": "'GET,POST,OPTIONS'",
               "method.response.header.Access-Control-Allow-Origin": "'*'"
             },

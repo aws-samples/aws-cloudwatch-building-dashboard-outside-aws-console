@@ -24,24 +24,27 @@ function apiHandler(api, params) {
 
     console.log(`API Handler ${api}`, params);
 
-    var options = {
-        url: params.url+'?widgetDefinition='+encodeURIComponent(JSON.stringify(params.widget)),
-        headers: {
-                'x-api-key' : params.api_key,
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept' : 'image/png'
-        }
-    };
+    params.widget.forEach((val) => {
+        
+        var options = {
+            url: params.url+'?widgetDefinition='+encodeURIComponent(JSON.stringify(val)),
+            headers: {
+                    'x-api-key' : params.api_key,
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept' : 'image/png'
+            }
+        };
 
-	request(options, function (error, response, body) {
-  		console.log('error:', error); 
-  		console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  		console.log('body:', body)
+    	request(options, function (error, response, body) {
+      		console.log('error:', error); 
+      		console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+      		console.log('body:', body)
 
-        var img = new Buffer(body, 'base64');
-  		render(img);
+            var img = new Buffer(body, 'base64');
+      		render(img);
 
-	});
+    	});
+    });
            
 }
 
