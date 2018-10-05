@@ -64,9 +64,7 @@
         var list = [] ;
         var widgets = document.getElementsByName('widgetDefinition');
         widgets.forEach((val, key, arr) => { 
-            var val = val.innerHTML; 
-            if(list.length > 0 && !Object.is(arr.length - 1, key)) val+=',' ;
-            list.push(JSON.parse(val)) ; 
+            list.push(JSON.parse(val.innerHTML)) ; 
         });
 
         (function (w,d,s,o,f,js,fjs) {
