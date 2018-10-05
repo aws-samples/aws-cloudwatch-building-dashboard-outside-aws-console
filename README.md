@@ -35,7 +35,7 @@ The Cloud Formation script should create the following:
 3. Build the component using WebPack `./node_modules/.bin/webpack --config webpack.config.js`
 4. Server the demo webpage on localhost `./node_modules/.bin/webpack-dev-server --open`
 
-The browser should open automatically at index.html. The page contains 1 embedded snapshot graph with the CPUUtilization of your EC2. 
+The browser should open automatically at index.html. The page contains 2 embedded snapshot graphs displaying the CPUUtilization and CPUCreditUsage metrics your EC2. 
 
 ### Troubleshooting:
 
