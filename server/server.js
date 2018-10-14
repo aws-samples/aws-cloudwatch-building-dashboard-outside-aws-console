@@ -5,14 +5,44 @@ const AWS = require('aws-sdk');
 
 exports.myHandler = function(event, context, callback) {
 
-	var widgetDefinition = { MetricWidget: {} }
+	var widgetDefinition = { MetricWidget: {} } ;
 
     widgetDefinition.MetricWidget = event.queryStringParameters.widgetDefinition ; 
 
-	console.log('widgetDefinition: ' + JSON.stringify(widgetDefinition));
+    let accountId = event.queryStringParameters.accountId ;
 
-    var cloudwatch = new AWS.CloudWatch();
-    cloudwatch.getMetricWidgetImage(widgetDefinition, function (err, data) {
+    console.log('accountId: ' + accountId);
+    console.log('widgetDefinition: ' + JSON.stringify(widgetDefinition));
+
+    let role = event.queryStringParameters.role ;
+    let thisAcctId = context.invokedFunctionArn.split(":")[4] ;
+
+    if (accountId !== null && accountId !== '' && accountId != thisAcctId) {
+
+        let roleArn = `arn:aws:iam::${accountId}:role/${role}`;
+        console.log("Assuming role: "+roleArn);
+
+        let sts = new AWS.STS() ;
+        sts.assumeRole({RoleArn: roleArn, RoleSessionName: 'SnapshotGraphs'}, function(err, data) {
+            if (err) console.log(err, err.stack); // an error occurred
+            else {           // successful response
+                console.log(JSON.stringify(data))
+                let tempCredentials = new AWS.Credentials(data.Credentials.AccessKeyId, 
+                                                          data.Credentials.SecretAccessKey, 
+                                                          data.Credentials.SessionToken)
+                getWidget(widgetDefinition, callback, tempCredentials);
+            }
+        });
+    } else 
+        getWidget(widgetDefinition, callback);
+  
+}
+
+getWidget = function(widgetDefinition, callback, tempCredentials) {
+    
+    let cloudWatch = tempCredentials ? new AWS.CloudWatch({credentials:tempCredentials}) : new AWS.CloudWatch();
+
+     cloudWatch.getMetricWidgetImage(widgetDefinition, function (err, data) {
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(data.MetricWidgetImage);           // successful response
@@ -29,7 +59,7 @@ exports.myHandler = function(event, context, callback) {
             callback(err, response);
         }
     });
-  
+
 }
 
 

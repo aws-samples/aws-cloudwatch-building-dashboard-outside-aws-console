@@ -6,57 +6,93 @@
 
     <script type="application/json" name="widgetDefinition">
       {
-        "width": 500,
-        "height": 400,
-        "start": "-PT1H",
-        "end": "PT0H",
-        "view": "timeSeries",
-        "stacked": false,
-        "metrics": [
-            [
-               "AWS/EC2",
-               "CPUUtilization",
-               "InstanceId",
-               "<YOUR_INSTANCE_ID>"
-            ]
-         ],
-         "stat": "Average",
-         "yAxis": {
-                "left": {
-                    "min": 0,
-                    "max": 0.3
-                }
-         },
-         "period": 60
-        
+        "widgetDefinition": {
+                "width": 500,
+                "height": 400,
+                "start": "-PT1H",
+                "end": "PT0H",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [
+                       "AWS/EC2",
+                       "CPUUtilization",
+                       "InstanceId",
+                       "<YOUR_INSTANCE_ID>"
+                    ]
+                 ],
+                 "stat": "Average",
+                 "yAxis": {
+                        "left": {
+                            "min": 0,
+                            "max": 0.3
+                        }
+                 },
+                 "period": 60,
+                 "title": "CPUUtilization: Instance a: Acct A"        
+        }
+    }
+    </script>
+
+    <script type="application/json" name="widgetDefinition">
+      {
+        "widgetDefinition": {
+                "width": 500,
+                "height": 400,
+                "start": "-PT1H",
+                "end": "PT0H",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [
+                       "AWS/EC2",
+                       "CPUUtilization",
+                       "InstanceId",
+                       "<YOUR_INSTANCE_ID>"
+                    ]
+                 ],
+                 "stat": "Average",
+                 "yAxis": {
+                        "left": {
+                            "min": 0,
+                            "max": 0.3
+                        }
+                 },
+                 "period": 60,
+                 "title": "CPUUtilization: Instance b: Acct A"      
+        },
+        "accountId": <OPTIONAL_ACCOUNT_ID>
     }
     </script>
 
      <script type="application/json" name="widgetDefinition">
-      {
-        "width": 500,
-        "height": 400,
-        "start": "-PT1H",
-        "end": "PT0H",
-        "view": "timeSeries",
-        "stacked": false,
-        "metrics": [
-            [
-               "AWS/EC2",
-               "CPUCreditUsage",
-               "InstanceId",
-               "<YOUR_INSTANCE_ID>"
-            ]
-         ],
-         "stat": "Average",
-         "yAxis": {
-                "left": {
-                    "min": 0,
-                    "max": 0.003
-                }
-         },
-         "period": 60
-        
+     {
+        "widgetDefinition": {
+                "width": 500,
+                "height": 400,
+                "start": "-PT1H",
+                "end": "PT0H",
+                "view": "timeSeries",
+                "stacked": false,
+                "metrics": [
+                    [
+                       "AWS/EC2",
+                       "CPUUtilization",
+                       "InstanceId",
+                       "<YOUR_INSTANCE_ID>"
+                    ]
+                 ],
+                 "stat": "Average",
+                 "yAxis": {
+                        "left": {
+                            "min": 0,
+                            "max": 0.3
+                        }
+                 },
+                 "period": 60,
+                 "title": "CPUUtilization: Instance c: Acct B"    
+        },
+        "accountId": <OPTIONAL_ACCOUNT_ID>
     }
     </script>
 
@@ -72,7 +108,7 @@
             js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
             js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
         }(window, document, 'script', 'cw', './widget.js'));
-        cw('widget', { url: '<YOUR_GATEWAY_URL>',
+        cw('widget', { url: '<YOUR_APIGATEWAY_URL>',
                        api_key: '<YOUR_API_KEY>', 
                        widget : list
                      });

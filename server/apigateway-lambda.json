@@ -418,7 +418,8 @@
           }]
         },
         "RequestParameters": {
-          "method.request.querystring.widgetDefinition": "true"
+          "method.request.querystring.widgetDefinition": "true",
+          "method.request.querystring.accountId": "false"
         },
         "ResourceId": {"Ref": "SnapshotGraphsResource"},
         "RestApiId": {"Ref": "SnapshotGraphsApi"},

@@ -25,9 +25,11 @@ function apiHandler(api, params) {
     console.log(`API Handler ${api}`, params);
 
     params.widget.forEach((val) => {
+
+        let accountId = val.accountId?val.accountId:"" ;
         
         var options = {
-            url: params.url+'?widgetDefinition='+encodeURIComponent(JSON.stringify(val)),
+            url: params.url+'?role=CloudWatchSnapshotGraphs&accountId='+accountId+ '&widgetDefinition='+encodeURIComponent(JSON.stringify(val.widgetDefinition)),
             headers: {
                     'x-api-key' : params.api_key,
                     'Content-Type': 'application/x-www-form-urlencoded',
