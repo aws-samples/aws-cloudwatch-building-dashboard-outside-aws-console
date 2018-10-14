@@ -42,5 +42,10 @@ The browser should open automatically at index.html. The page contains 2 embedde
 1. View the API GateWay log file in CloudWatch. 
 2. View the Lambda log file in CloudWatch. 
 
-See the CloudWatch API documentation for [GetMetricWidgetImage](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html) for more information. 
+See the CloudWatch API documentation for [GetMetricWidgetImage](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html) for more information.
+
+
+## Multi-account Dashboards
+
+The widget definition supports an optional parameter called accountId. This defaults to the account the Lambda is running in. 
 
