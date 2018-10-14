@@ -51,3 +51,36 @@ The widget definition JSON supports an optional parameter called accountId. This
 
 `"accountId": 1234567`
 
+### Multi-account Permissions
+
+The Lambda attempts to assume a role called CloudWatchSnapshotGraphs in the accounts you define in the widget. To build a cross-account dashboard you first need to establish a trust relationship between the accounts running the Lambda and the account ids specified in the widget definition(s). 
+
+1. Ensure that the role running the Lambda has permissions to assume the role in any account.
+`{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sts:AssumeRole",
+                "sts:GetFederationToken"
+            ],
+            "Resource": "arn:aws:iam::*:role/CloudWatchSnapshotGraphs"
+        }
+    ]
+}`
+2. Create a role called CloudWatchSnapshotGraphs in each account you want to retrieve charts from. Ensure that the role provides read-only access to CloudWatch and has a trust relationship with the account the Lambda is being executed.
+`{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::<YOUR LAMBDA ACCOUNTID>:root"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}`
+
+
