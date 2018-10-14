@@ -47,5 +47,7 @@ See the CloudWatch API documentation for [GetMetricWidgetImage](https://docs.aws
 
 ## Multi-account Dashboards
 
-The widget definition supports an optional parameter called accountId. This defaults to the account the Lambda is running in. 
+The widget definition JSON supports an optional parameter called accountId. This defaults to the account the Lambda is running in. You can use the accountId parameter to specify the account where the metric(s) live. Enabling you to build cross-account dashboards. 
+
+`"accountId": 1234567`
 
