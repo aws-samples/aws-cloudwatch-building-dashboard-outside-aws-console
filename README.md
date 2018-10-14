@@ -71,7 +71,7 @@ The Lambda attempts to assume a role called CloudWatchSnapshotGraphs in the acco
     ]
 }
 ```
-2. Create a role called CloudWatchSnapshotGraphs in each account you want to retrieve charts from. Ensure that the role provides read-only access to CloudWatch and has a trust relationship with the account the Lambda is being executed.
+2. Create a role called CloudWatchSnapshotGraphs in each account you want to retrieve charts from. Ensure that the role has read-only permissions to CloudWatch and has a trust relationship with the account that executes the Lambda.
 ```json
 {
   "Version": "2012-10-17",
