@@ -45,13 +45,13 @@ The browser should open automatically at index.html. The page contains 2 embedde
 See the CloudWatch API documentation for [GetMetricWidgetImage](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricWidgetImage.html) for more information.
 
 
-## Multi-account Dashboards
+## Cross-account Dashboards
 
 The widget definition JSON supports an optional parameter called accountId. This defaults to the account the Lambda is running in. You can use the accountId parameter to specify the account where the metric(s) live. Enabling you to build cross-account dashboards. 
 
 `"accountId": 1234567`
 
-### Multi-account Permissions
+### Cross-account Permissions
 
 The Lambda attempts to assume a role called CloudWatchSnapshotGraphs in the accounts you define in the widget. To build a cross-account dashboard you first need to establish a trust relationship between the accounts running the Lambda and the account ids specified in the widget definition(s). 
 
