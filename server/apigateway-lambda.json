@@ -279,7 +279,7 @@
         "FunctionName": "SnapshotGraphsLambda",
         "Handler": "server.myHandler",
         "Role": { "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]},
-        "Runtime": "nodejs8.10"
+        "Runtime": "nodejs10.x"
       }
     },
 
